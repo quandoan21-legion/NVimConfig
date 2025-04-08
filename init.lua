@@ -1,6 +1,6 @@
 -- Set leader key
 vim.g.mapleader = " "
-
+vim.g.maplocalleader = " "
 -- Editor settings
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -17,3 +17,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Load plugin system
 require("plugins")
+require("keymaps")

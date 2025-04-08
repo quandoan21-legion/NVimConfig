@@ -22,9 +22,5 @@ return {
 				},
 			},
 		})
-
-		-- 🔁 Buffer navigation keymaps
-		vim.keymap.set("n", "L", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-		vim.keymap.set("n", "H", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 	end,
 }
