@@ -18,3 +18,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Load plugin system
 require("plugins")
 require("keymaps")
+-- Load  snippets
+require("luasnip.loaders.from_lua").lazy_load({
+	paths = { "~/.config/nvim/lua/snippets" },
+})
