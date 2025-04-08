@@ -8,7 +8,7 @@ vim.opt.relativenumber = true
 -- hightligh after yank
 vim.api.nvim_set_hl(0, "YankHighlight", { fg = "#ffffff", bg = "#FFA500", bold = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	esc = "Highlight yanked text",
+	desc = "Highlight yanked text",
 	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 500 })
