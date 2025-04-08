@@ -11,6 +11,12 @@ return {
 				start_in_insert = true,
 				persist_mode = false,
 			})
+			vim.api.nvim_create_autocmd("TermOpen", {
+				pattern = "term://*toggleterm#*",
+				callback = function()
+					vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = true })
+				end,
+			})
 		end,
 	},
 }

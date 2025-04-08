@@ -55,3 +55,5 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 -- Close buffer
 map("n", "<leader>x", "<cmd>bd<CR>", { noremap = true, silent = true, desc = "Close buffer" })
+-- Normal mode for terminal
+map("t", "<Esc>", [[<C-\><C-n>]], { buffer = true })
