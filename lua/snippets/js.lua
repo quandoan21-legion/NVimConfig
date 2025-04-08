@@ -2,27 +2,12 @@ local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local f = require("luasnip.extras").f
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
 return {
-	-- 1. Class with export and extends
-	s(
-		"class",
-		fmt(
-			[[
-    export class {} extends Component {{
-      {}
-    }}
-  ]],
-			{
-				i(1, "MyClass"),
-				i(0),
-			}
-		)
-	),
-
-	-- 2. Arrow function
+	-- General JS Snippets (keep as-is)
 	s(
 		"af",
 		fmt(
@@ -39,10 +24,8 @@ return {
 		)
 	),
 
-	-- 3. Console.log
 	s("log", fmt([[console.log({});]], { i(0) })),
 
-	-- 4. For loop
 	s(
 		"for",
 		fmt(
@@ -61,7 +44,6 @@ return {
 		)
 	),
 
-	-- 5. Import statement
 	s(
 		"imp",
 		fmt([[import {} from '{}';]], {
@@ -70,7 +52,6 @@ return {
 		})
 	),
 
-	-- 6. useState (React-style)
 	s(
 		"us",
 		fmt(
@@ -90,7 +71,6 @@ return {
 		)
 	),
 
-	-- 7. try-catch
 	s(
 		"try",
 		fmt(
@@ -105,6 +85,78 @@ return {
 				i(1),
 				i(2, "err"),
 				rep(2),
+			}
+		)
+	),
+
+	-- Odoo OWL Snippets (all with "o" prefix)
+	s(
+		"oclass",
+		fmt(
+			[[
+    export class {} extends Component {{
+        static template = "{}.{}";
+
+        setup() {{
+            this.state = useState({{
+                {}
+            }});
+        }}
+
+        {}() {{
+            {}
+        }}
+    }}
+  ]],
+			{
+				i(1, "MyComponent"),
+				i(2, "my_module"),
+				rep(1),
+				i(3, "value: 0"),
+				i(4, "increment"),
+				i(5, "this.state.value++;"),
+			}
+		)
+	),
+
+	s(
+		"oservice",
+		fmt(
+			[[
+    export class {} extends owl.Component {{
+        setup() {{
+            super.setup();
+        }}
+
+        {}
+    }}
+  ]],
+			{
+				i(1, "MyService"),
+				i(2, "// your methods here"),
+			}
+		)
+	),
+
+	s(
+		"oref",
+		fmt([[this.{} = useRef("{}");]], {
+			i(1, "myRef"),
+			i(2, "element"),
+		})
+	),
+
+	s(
+		"oevent",
+		fmt(
+			[[
+    {}(ev) {{
+        {}
+    }}
+  ]],
+			{
+				i(1, "onClick"),
+				i(2, "console.log(ev);"),
 			}
 		)
 	),
