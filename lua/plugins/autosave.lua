@@ -11,7 +11,7 @@ return {
 				dim = 0.18,
 				cleaning_interval = 1250,
 			},
-			trigger_events = { "InsertLeave", "TextChanged" },
+			trigger_events = { "InsertLeave" },
 			conditions = {
 				exists = true,
 				filename_is_not = {},
