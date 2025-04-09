@@ -11,20 +11,19 @@ local function closing_tag(args)
 	return sn(nil, {
 		t("</"),
 		f(function(inner_args)
-			return inner_args[1][1] -- mirror tag name
+			return inner_args[1][1] ~= "" and inner_args[1][1] or "div"
 		end, args),
 		t(">"),
 	})
 end
-
 return {
 	-- Trigger: tag
 	s("tag", {
 		t("<"),
-		i(1, "div"), -- Opening tag name
+		i(1, "div"),
 		t(">"),
-		i(2, "content"), -- Tag content
-		d(3, closing_tag, { 1 }), -- Closing tag synced with opening
+		i(2, "content"),
+		d(3, closing_tag, { 1 }),
 	}),
 	-- OWL Basic Template
 	s(
