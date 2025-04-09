@@ -74,4 +74,19 @@ return {
 			}
 		)
 	),
+	-- OWL t-esc
+	s(
+		"owltesc",
+		fmt(
+			[[
+    <t t-esc="{}">
+        {}
+    </t>
+  ]],
+			{
+				i(1, "expression"),
+				i(2, "<p>Escaped content goes here</p>"),
+			}
+		)
+	),
 }

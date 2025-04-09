@@ -7,7 +7,11 @@ local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 
 return {
-	-- General JS Snippets (keep as-is)
+
+	-- ========================================
+	-- 🚀 General JavaScript/React Snippets
+	-- ========================================
+
 	s(
 		"af",
 		fmt(
@@ -18,13 +22,18 @@ return {
   ]],
 			{
 				i(1, "myFunction"),
-				i(2),
-				i(0),
+				i(2, "args"),
+				i(0, "// body"),
 			}
 		)
 	),
 
-	s("log", fmt([[console.log({});]], { i(0) })),
+	s(
+		"log",
+		fmt([[console.log({});]], {
+			i(0, "value"),
+		})
+	),
 
 	s(
 		"for",
@@ -39,7 +48,7 @@ return {
 				rep(1),
 				i(2, "arr.length"),
 				rep(1),
-				i(0),
+				i(0, "// body"),
 			}
 		)
 	),
@@ -47,7 +56,7 @@ return {
 	s(
 		"imp",
 		fmt([[import {} from '{}';]], {
-			i(1, "something"),
+			i(1, "name"),
 			i(2, "module"),
 		})
 	),
@@ -82,30 +91,33 @@ return {
     }}
   ]],
 			{
-				i(1),
+				i(1, "// try body"),
 				i(2, "err"),
 				rep(2),
 			}
 		)
 	),
 
-	-- Odoo OWL Snippets (all with "o" prefix)
+	-- ========================================
+	-- 🦉 Odoo OWL Snippets (prefix: 'o')
+	-- ========================================
+
 	s(
 		"oclass",
 		fmt(
 			[[
     export class {} extends Component {{
-        static template = "{}.{}";
+      static template = "{}.{}";
 
-        setup() {{
-            this.state = useState({{
-                {}
-            }});
-        }}
+      setup() {{
+        this.state = useState({{
+          {}
+        }});
+      }}
 
-        {}() {{
-            {}
-        }}
+      {}() {{
+        {}
+      }}
     }}
   ]],
 			{
@@ -124,11 +136,11 @@ return {
 		fmt(
 			[[
     export class {} extends owl.Component {{
-        setup() {{
-            super.setup();
-        }}
+      setup() {{
+        super.setup();
+      }}
 
-        {}
+      {}
     }}
   ]],
 			{
@@ -151,7 +163,7 @@ return {
 		fmt(
 			[[
     {}(ev) {{
-        {}
+      {}
     }}
   ]],
 			{
