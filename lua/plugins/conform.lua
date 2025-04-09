@@ -11,10 +11,10 @@ return {
 			python = { "black" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
-			xml = { "xmlformatter" },
 			html = { "prettier" },
 			css = { "prettier" },
 			json = { "prettier" },
+			xml = { "xmlformatter" },
 		},
 	},
 }

@@ -57,3 +57,8 @@ map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<leader>x", "<cmd>bd<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 -- Normal mode for terminal
 map("t", "<Esc>", [[<C-\><C-n>]], { buffer = true })
+-- Move current line down with J
+vim.api.nvim_set_keymap("n", "J", ":m .+1<CR>==", { noremap = true, silent = true })
+
+-- Move current line up with K
+vim.api.nvim_set_keymap("n", "K", ":m .-2<CR>==", { noremap = true, silent = true })

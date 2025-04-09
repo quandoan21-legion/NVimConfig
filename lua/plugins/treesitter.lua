@@ -12,7 +12,6 @@ return {
 				"css",
 				"bash",
 				"json",
-				"xml",
 				"markdown",
 			},
 			highlight = {
