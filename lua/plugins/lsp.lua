@@ -16,6 +16,7 @@ return { -- Mason for LSP/DAP/formatter installer
 					"lua_ls",
 					"ts_ls",
 					"cssls",
+					"emmet_ls",
 					"lemminx",
 				},
 				automatic_installation = true,
@@ -31,6 +32,18 @@ return { -- Mason for LSP/DAP/formatter installer
 
 			-- 🧠 Add cmp-nvim-lsp capabilities
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			-- Emmet_ls
+			require("lspconfig").emmet_ls.setup({
+				filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "xml" },
+				init_options = {
+					html = {
+						options = {
+							["bem.enabled"] = true,
+						},
+					},
+				},
+			})
 
 			-- Css and Scss
 			require("lspconfig").cssls.setup({
