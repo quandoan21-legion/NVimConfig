@@ -11,15 +11,28 @@ vim.cmd("highlight LineNr guifg=#00ffff")
 vim.opt.tabstop = 4 -- Number of spaces tabs count for
 vim.opt.shiftwidth = 4 -- Number of spaces to use for each indent
 vim.opt.expandtab = true -- Convert tabs to spaces
--- hightligh after yank
-vim.api.nvim_set_hl(0, "YankHighlight", { fg = "#ffffff", bg = "#FFA500", bold = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight yanked text",
-	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 500 })
-	end,
-})
+
+-- Highlight yanked text with the "IncSearch" highlight group for 200ms
+vim.api.nvim_exec(
+	[[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=200})
+  augroup END
+]],
+	false
+)
+
+-- Reapply yank highlight after changing color scheme
+vim.api.nvim_exec(
+	[[
+  augroup HighlightOnColorschemeChange
+    autocmd!
+    autocmd ColorScheme * lua vim.highlight.on_yank({higroup="IncSearch", timeout=200})
+  augroup END
+]],
+	false
+)
 
 -- Load plugin system
 require("plugins")
@@ -32,3 +45,6 @@ require("luasnip").config.set_config({
 
 require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
 require("luasnip.loaders.from_vscode").lazy_load() -- optional
+
+-- custom theme switcher
+require("user.theme_switcher")
