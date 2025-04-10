@@ -15,6 +15,7 @@ return { -- Mason for LSP/DAP/formatter installer
 					"pyright",
 					"lua_ls",
 					"ts_ls",
+					"cssls",
 					"lemminx",
 				},
 				automatic_installation = true,
@@ -30,6 +31,22 @@ return { -- Mason for LSP/DAP/formatter installer
 
 			-- 🧠 Add cmp-nvim-lsp capabilities
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			-- Css and Scss
+			require("lspconfig").cssls.setup({
+				capabilities = capabilities, -- your LSP capabilities, if using cmp
+				settings = {
+					css = {
+						validate = true,
+					},
+					scss = {
+						validate = true,
+					},
+					less = {
+						validate = true,
+					},
+				},
+			})
 
 			-- 🐍 Python
 			lspconfig.pyright.setup({
