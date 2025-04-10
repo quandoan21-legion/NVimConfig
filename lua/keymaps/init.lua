@@ -62,3 +62,9 @@ vim.api.nvim_set_keymap("n", "J", ":m .+1<CR>==", { noremap = true, silent = tru
 
 -- Move current line up with K
 vim.api.nvim_set_keymap("n", "K", ":m .-2<CR>==", { noremap = true, silent = true })
+
+-- git sign Keybindings
+map("n", "]c", require("gitsigns").next_hunk, { desc = "Next hunk" })
+map("n", "[c", require("gitsigns").prev_hunk, { desc = "Prev hunk" })
+map("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
+map("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })

@@ -19,6 +19,7 @@ require("lazy").setup({
 	{ import = "plugins.nvim_tree" },
 	{ import = "plugins.telescope" },
 	{ import = "plugins.autotag" },
+	{ import = "plugins.git_sign" },
 	-- { import = "plugins.emmet" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.devicons" },
