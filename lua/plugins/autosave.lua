@@ -1,6 +1,6 @@
 return {
 	"Pocco81/auto-save.nvim",
-	event = { "InsertLeave" },
+	event = { "BufReadPost" }, -- lazy-load when file is opened
 	config = function()
 		require("auto-save").setup({
 			enabled = true,
