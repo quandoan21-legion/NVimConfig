@@ -22,6 +22,9 @@ return {
 			prettier = {
 				prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
 			},
+			xmlformatter = {
+				prepend_args = { "--indent", "4" }, -- this sets 4-space indent
+			},
 		},
 	},
 }
