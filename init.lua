@@ -8,6 +8,9 @@ vim.opt.writebackup = false
 vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
 vim.cmd("highlight LineNr guifg=#00ffff")
+vim.opt.tabstop = 4 -- Number of spaces tabs count for
+vim.opt.shiftwidth = 4 -- Number of spaces to use for each indent
+vim.opt.expandtab = true -- Convert tabs to spaces
 -- hightligh after yank
 vim.api.nvim_set_hl(0, "YankHighlight", { fg = "#ffffff", bg = "#FFA500", bold = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
