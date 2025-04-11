@@ -6,8 +6,8 @@ return {
 		priority = 1000,
 		config = function()
 			require("tokyonight").setup({
-				transparent = false,
-				style = "night", -- options: night, storm, moon, day
+				transparent = true,
+				style = "night",
 			})
 			vim.cmd("colorscheme tokyonight-night")
 		end,
@@ -20,7 +20,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("gruvbox").setup({
-				transparent_mode = false, -- Disable transparency
+				transparent_mode = true,
 			})
 		end,
 	},
@@ -33,7 +33,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				transparent_background = false, -- Disable transparency
+				transparent_background = true,
 			})
 		end,
 	},
@@ -45,8 +45,8 @@ return {
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
-				style = "darker", -- options: dark, darker, cool, deep, warm, warmer, light
-				transparent = false, -- Disable transparency
+				style = "darker",
+				transparent = true,
 			})
 		end,
 	},
@@ -57,9 +57,9 @@ return {
 		lazy = true,
 		priority = 1000,
 		config = function()
-			vim.g.everforest_background = "hard" -- or "medium", "soft"
+			vim.g.everforest_background = "hard"
 			vim.g.everforest_enable_italic = 1
-			vim.g.everforest_transparent_background = 0 -- Disable transparency
+			vim.g.everforest_transparent_background = 1
 		end,
 	},
 
@@ -71,7 +71,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("rose-pine").setup({
-				disable_background = false, -- Keep the background non-transparent
+				disable_background = true,
 			})
 		end,
 	},
@@ -81,6 +81,7 @@ return {
 		"arcticicestudio/nord-vim",
 		lazy = true,
 		config = function()
+			vim.g.nord_disable_background = true
 			vim.cmd("colorscheme nord")
 		end,
 	},
@@ -90,6 +91,15 @@ return {
 		"Shatur/neovim-ayu",
 		lazy = true,
 		config = function()
+			require("ayu").setup({
+				mirage = false,
+				overrides = {
+					Normal = { bg = "none" },
+					NormalNC = { bg = "none" },
+					SignColumn = { bg = "none" },
+					NvimTreeNormal = { bg = "none" },
+				},
+			})
 			vim.cmd("colorscheme ayu-dark")
 		end,
 	},
@@ -99,6 +109,7 @@ return {
 		"dracula/vim",
 		lazy = true,
 		config = function()
+			vim.g.dracula_transparent_bg = true
 			vim.cmd("colorscheme dracula")
 		end,
 	},
@@ -108,6 +119,7 @@ return {
 		"altercation/vim-colors-solarized",
 		lazy = true,
 		config = function()
+			vim.g.solarized_termtrans = 1
 			vim.cmd("colorscheme solarized")
 		end,
 	},
@@ -118,7 +130,9 @@ return {
 		lazy = true,
 		config = function()
 			require("nightfox").setup({
-				transparent = false,
+				options = {
+					transparent = true,
+				},
 			})
 			vim.cmd("colorscheme nightfox")
 		end,
@@ -130,7 +144,9 @@ return {
 		lazy = true,
 		config = function()
 			require("github-theme").setup({
-				transparent = false,
+				options = {
+					transparent = true,
+				},
 			})
 			vim.cmd("colorscheme github_dark")
 		end,
@@ -150,6 +166,11 @@ return {
 		"marko-cerovac/material.nvim",
 		lazy = true,
 		config = function()
+			require("material").setup({
+				disable = {
+					background = true,
+				},
+			})
 			vim.cmd("colorscheme material")
 		end,
 	},
@@ -178,7 +199,7 @@ return {
 		lazy = true,
 		config = function()
 			require("tokyonight").setup({
-				transparent = false,
+				transparent = true,
 				style = "storm",
 			})
 			vim.cmd("colorscheme tokyonight-storm")
@@ -190,6 +211,7 @@ return {
 		"cocopon/iceberg.vim",
 		lazy = true,
 		config = function()
+			vim.g.iceberg_transparent = 1
 			vim.cmd("colorscheme iceberg")
 		end,
 	},
@@ -199,11 +221,12 @@ return {
 		"jnurmine/Zenburn",
 		lazy = true,
 		config = function()
+			vim.g.zenburn_transparent = 1
 			vim.cmd("colorscheme zenburn")
 		end,
 	},
 
-	-- Lightline (for a clean, light theme)
+	-- Lightline
 	{
 		"itchyny/lightline.vim",
 		lazy = true,
@@ -212,29 +235,34 @@ return {
 		end,
 	},
 
-	-- Deep Ocean
+	-- Deep Ocean (Gruvbox)
 	{
 		"morhetz/gruvbox",
 		lazy = true,
 		config = function()
+			vim.g.gruvbox_transparent_bg = 1
 			vim.cmd("colorscheme gruvbox")
 		end,
 	},
 
-	-- Dracula Dark
+	-- Dracula Dark (again)
 	{
 		"dracula/vim",
 		lazy = true,
 		config = function()
+			vim.g.dracula_transparent_bg = true
 			vim.cmd("colorscheme dracula")
 		end,
 	},
 
-	-- Warm colorscheme
+	-- Warm Dracula
 	{
 		"Mofiqul/dracula.nvim",
 		lazy = true,
 		config = function()
+			require("dracula").setup({
+				transparent_bg = true,
+			})
 			vim.cmd("colorscheme dracula")
 		end,
 	},

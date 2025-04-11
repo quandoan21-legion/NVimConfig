@@ -22,6 +22,7 @@ require("lazy").setup({
 	{ import = "plugins.git_sign" },
 	{ import = "plugins.git_blame" },
 	{ import = "plugins.which_key" },
+	{ import = "plugins.omnisharp" },
 	-- { import = "plugins.emmet" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.devicons" },
