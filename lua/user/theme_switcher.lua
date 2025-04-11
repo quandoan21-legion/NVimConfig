@@ -4,6 +4,7 @@ local themes = {
 	rose_pine = { "rose-pine", { "main", "moon", "dawn" } },
 	onedark = { "onedark", { "dark", "darker", "cool", "deep", "warm", "warmer", "light" } },
 	vercel = { "vercel", { "default" } },
+	neosolarized = { "NeoSolarized", { "dark", "light" } },
 	vim_builtin = {
 		"builtin",
 		{
@@ -49,11 +50,29 @@ local function set_transparent_highlights()
 		vim.api.nvim_set_hl(0, group, { bg = "none" })
 	end
 end
-
 local function apply_theme(theme, variant)
 	if theme == "builtin" then
 		vim.cmd("colorscheme " .. variant)
-		set_transparent_highlights()
+
+		-- Transparent background
+		local transparent_groups = {
+			"Normal",
+			"NormalNC",
+			"NormalFloat",
+			"FloatBorder",
+			"SignColumn",
+			"VertSplit",
+		}
+		for _, group in ipairs(transparent_groups) do
+			vim.api.nvim_set_hl(0, group, { bg = "none" })
+		end
+
+		-- Add italic and bold styling
+		vim.api.nvim_set_hl(0, "Comment", { italic = true })
+		vim.api.nvim_set_hl(0, "Keyword", { italic = true })
+		vim.api.nvim_set_hl(0, "Function", { bold = true })
+		vim.api.nvim_set_hl(0, "Statement", { bold = true })
+		vim.api.nvim_set_hl(0, "Type", { bold = true })
 	else
 		local ok, plugin = pcall(require, theme)
 		if not ok then
@@ -75,10 +94,25 @@ local function apply_theme(theme, variant)
 		elseif theme == "vercel" then
 			plugin.setup({ transparent = true })
 			vim.cmd("colorscheme vercel")
+		elseif theme == "NeoSolarized" then
+			plugin.setup({
+				style = variant,
+				transparent = true,
+				styles = {
+					comments = { italic = true },
+					keywords = { italic = true },
+					functions = { italic = true, bold = true },
+					variables = { bold = true },
+				},
+				on_highlights = function(highlights, colors)
+					highlights.Normal = { fg = colors.fg, bg = "NONE" }
+				end,
+			})
+			vim.cmd("colorscheme NeoSolarized")
 		end
 	end
 
-	-- Save selection
+	-- Save to file
 	local config_path = vim.fn.stdpath("config") .. "/lua/user_theme.lua"
 	local file = io.open(config_path, "w")
 	if file then

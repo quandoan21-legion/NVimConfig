@@ -1,4 +1,23 @@
 return {
+	{
+		"Tsuzat/NeoSolarized.nvim",
+		lazy = true,
+		priority = 1000,
+		config = function()
+			require("NeoSolarized").setup({
+				transparent = true,
+				styles = {
+					comments = "italic",
+					keywords = "bold",
+					functions = "italic,bold",
+					variables = "bold",
+				},
+				on_highlights = function(highlights, colors)
+					highlights.Normal = { fg = colors.fg, bg = "NONE" }
+				end,
+			})
+		end,
+	},
 	-- Tokyo Night
 	{
 		"folke/tokyonight.nvim",
