@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = "plugins.lazyvim" },
 	{ import = "plugins.luasnip" },
+	{ import = "plugins.rainbow_delimiter" },
 	{ import = "plugins.nvim_tree" },
 	{ import = "plugins.telescope" },
 	{ import = "plugins.autotag" },

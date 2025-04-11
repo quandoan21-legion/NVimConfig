@@ -16,7 +16,6 @@ return {
 			json = { "prettier" },
 			scss = { "prettier" },
 			css = { "prettier" },
-			xml = { "xmlformatter" },
 		},
 		formatters = {
 			prettier = {

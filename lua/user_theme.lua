@@ -1,1 +1,1 @@
-return { theme = "builtin", variant = "vim" }
+return { theme = "tokyonight", variant = "moon" }
