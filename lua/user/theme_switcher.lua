@@ -2,9 +2,53 @@ local themes = {
 	tokyo_night = { "tokyonight", { "night", "storm", "moon", "day" } },
 	catppuccin = { "catppuccin", { "latte", "frappe", "macchiato", "mocha" } },
 	rose_pine = { "rose-pine", { "main", "moon", "dawn" } },
+
+	-- Built-in and misc themes (added as "default" variants)
+	vim_builtin = {
+		"builtin",
+		{
+			"blue",
+			"darkblue",
+			"default",
+			"delek",
+			"desert",
+			"elflord",
+			"evening",
+			"habamax",
+			"industry",
+			"koehler",
+			"lunaperche",
+			"morning",
+			"murphy",
+			"pablo",
+			"peachpuff",
+			"quiet",
+			"retrobox",
+			"ron",
+			"shine",
+			"slate",
+			"sorbet",
+			"torte",
+			"vim",
+			"wildcharm",
+			"zaibatsu",
+		},
+	},
 }
 
 local function apply_theme(theme, variant)
+	if theme == "builtin" then
+		vim.cmd("colorscheme " .. variant)
+		-- Apply transparency to default/built-in themes
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+		vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+		vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
+		return
+	end
+
 	local ok, plugin = pcall(require, theme)
 	if not ok then
 		return
@@ -15,19 +59,20 @@ local function apply_theme(theme, variant)
 			style = variant,
 			transparent = true,
 		})
+		vim.cmd("colorscheme " .. theme .. "-" .. variant)
 	elseif theme == "catppuccin" then
 		plugin.setup({
 			flavour = variant,
 			transparent_background = true,
 		})
+		vim.cmd("colorscheme catppuccin")
 	elseif theme == "rose-pine" then
 		plugin.setup({
 			variant = variant,
 			disable_background = true,
 		})
+		vim.cmd("colorscheme rose-pine")
 	end
-
-	vim.cmd("colorscheme " .. theme .. "-" .. variant)
 end
 
 local function switch_theme()
