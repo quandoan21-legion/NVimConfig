@@ -9,7 +9,6 @@ return {
 				transparent = true,
 				style = "night",
 			})
-			vim.cmd("colorscheme tokyonight-night")
 		end,
 	},
 
@@ -82,7 +81,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.nord_disable_background = true
-			vim.cmd("colorscheme nord")
 		end,
 	},
 
@@ -100,7 +98,6 @@ return {
 					NvimTreeNormal = { bg = "none" },
 				},
 			})
-			vim.cmd("colorscheme ayu-dark")
 		end,
 	},
 
@@ -110,7 +107,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.dracula_transparent_bg = true
-			vim.cmd("colorscheme dracula")
 		end,
 	},
 
@@ -120,7 +116,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.solarized_termtrans = 1
-			vim.cmd("colorscheme solarized")
 		end,
 	},
 
@@ -134,7 +129,6 @@ return {
 					transparent = true,
 				},
 			})
-			vim.cmd("colorscheme nightfox")
 		end,
 	},
 
@@ -148,7 +142,6 @@ return {
 					transparent = true,
 				},
 			})
-			vim.cmd("colorscheme github_dark")
 		end,
 	},
 
@@ -156,9 +149,7 @@ return {
 	{
 		"tanvirtin/monokai.nvim",
 		lazy = true,
-		config = function()
-			vim.cmd("colorscheme monokai")
-		end,
+		config = function() end,
 	},
 
 	-- Material
@@ -171,7 +162,6 @@ return {
 					background = true,
 				},
 			})
-			vim.cmd("colorscheme material")
 		end,
 	},
 
@@ -179,18 +169,14 @@ return {
 	{
 		"NLKNguyen/papercolor-theme",
 		lazy = true,
-		config = function()
-			vim.cmd("colorscheme PaperColor")
-		end,
+		config = function() end,
 	},
 
 	-- Palenight
 	{
 		"drewtempelmeyer/palenight.vim",
 		lazy = true,
-		config = function()
-			vim.cmd("colorscheme palenight")
-		end,
+		config = function() end,
 	},
 
 	-- Tokyo Night Storm
@@ -212,7 +198,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.iceberg_transparent = 1
-			vim.cmd("colorscheme iceberg")
 		end,
 	},
 
@@ -222,7 +207,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.zenburn_transparent = 1
-			vim.cmd("colorscheme zenburn")
 		end,
 	},
 
@@ -230,9 +214,7 @@ return {
 	{
 		"itchyny/lightline.vim",
 		lazy = true,
-		config = function()
-			vim.cmd("colorscheme lightline")
-		end,
+		config = function() end,
 	},
 
 	-- Deep Ocean (Gruvbox)
@@ -241,7 +223,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.gruvbox_transparent_bg = 1
-			vim.cmd("colorscheme gruvbox")
 		end,
 	},
 
@@ -251,7 +232,6 @@ return {
 		lazy = true,
 		config = function()
 			vim.g.dracula_transparent_bg = true
-			vim.cmd("colorscheme dracula")
 		end,
 	},
 
@@ -263,7 +243,6 @@ return {
 			require("dracula").setup({
 				transparent_bg = true,
 			})
-			vim.cmd("colorscheme dracula")
 		end,
 	},
 }

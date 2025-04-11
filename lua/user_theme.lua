@@ -1,0 +1,1 @@
+return { theme = "builtin", variant = "vim" }

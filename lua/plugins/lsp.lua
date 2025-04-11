@@ -19,7 +19,6 @@ return { -- Mason for LSP/DAP/formatter installer
 					"emmet_ls",
 					"lemminx",
 					"xmlformatter",
-					"prettier",
 				},
 				automatic_installation = true,
 			})
